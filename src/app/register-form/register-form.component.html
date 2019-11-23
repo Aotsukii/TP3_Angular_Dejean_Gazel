@@ -1,28 +1,44 @@
 <body class="mat-app-background">
+    <h1>R E G I S T E R</h1>
     <div>
-        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
-            <h1>R E G I S T E R</h1>
-            <label>
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+            <label for="firstname">
                 First Name
-                <input type="text" formControlName="firstName" required>
+                <input required placeholder="FirstName" type="text" [ngModel]="firstname" #firstname="ngModel" name="firstname" id="fisrtname" >
             </label>
-            <label>
+            <div class="error" *ngIf="firstname.invalid"> <!--autre mot clé possible pour la validation-->
+                The firstname must be put
+            </div>
+            <label for="lastname">
                 Last Name
-                <input type="text" formControlName="lastName" required>
+                <input required placeholder="LastName" [ngModel]="lastname" #lastname="ngModel" name="lastname" type="text" id="lastname">
             </label>
-            <label>
+            <div class="error" *ngIf="lastname.invalid">
+                    The lastname must be put
+                </div>
+            <label for="mail">
                 Mail
-                <input type="text" formControlName="mail" required>
+                <input required placeholder="Mail" [ngModel]="mail" #mail="ngModel" name="mail" type="text" id="mail" >
             </label>
-            <label>
+            <div class="error" *ngIf="mail.invalid">
+                    The mail must be put
+                </div>
+            <label for="password">
                 Password
-                <input type="text" formControlName="password" required>
+                <input required placeholder="password" [ngModel]="password" #password="ngModel" name="password" type="text" id="password" >
             </label>
-            <label>
+            <div class="error" *ngIf="password.invalid">
+                    The password must be put
+                </div>
+            <label for="phone">
                 Phone Number
-                <input type="text" formControlName="phone" required>
+                <input required placeholder="phone" [ngModel]="phone" #phone="ngModel" name="phone" type="text" id="phone" >
             </label>
-            <input type="submit" [disabled]="!RegisterForm.valid" value="R E G I S T E R">
+            <div class="error" *ngIf="phone.invalid">
+                    The phone must be put
+                </div>
+            <button type="submit">R E G I S T E R</button>
+            <button type="button" (click)="resetUserForm(userForm)">Reset Form</button><!-- boutton de reset pour pas te faire chier ;)-->
         </form>
     </div>
 </body>
