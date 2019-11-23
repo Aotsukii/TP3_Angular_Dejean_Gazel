@@ -1,1 +1,28 @@
-<p>register-form works!</p>
+<body class="mat-app-background">
+    <div>
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            <h1>R E G I S T E R</h1>
+            <label>
+                First Name
+                <input type="text" formControlName="firstName" required>
+            </label>
+            <label>
+                Last Name
+                <input type="text" formControlName="lastName" required>
+            </label>
+            <label>
+                Mail
+                <input type="text" formControlName="mail" required>
+            </label>
+            <label>
+                Password
+                <input type="text" formControlName="password" required>
+            </label>
+            <label>
+                Phone Number
+                <input type="text" formControlName="phone" required>
+            </label>
+            <input type="submit" [disabled]="!RegisterForm.valid" value="R E G I S T E R">
+        </form>
+    </div>
+</body>
