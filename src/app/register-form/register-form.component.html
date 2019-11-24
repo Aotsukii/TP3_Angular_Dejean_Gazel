@@ -1,11 +1,10 @@
 <body class="mat-app-background">
     <div>
         <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
-            <h1>R E G I S T E R</h1>
-            <label>
-                First Name
+            <h1>R E G I S T E R <br>(TP DEJEAN/GAZEL B3 C3)</h1>
+            <label>First Name</label>
                 <input type="text" formControlName="firstName" required>
-            </label>
+               
             <label>
                 Last Name
                 <input type="text" formControlName="lastName" required>
@@ -16,13 +15,26 @@
             </label>
             <label>
                 Password
-                <input type="text" formControlName="password" required>
+                <input type="password" formControlName="password" required>
             </label>
             <label>
                 Phone Number
                 <input type="text" formControlName="phone" required>
             </label>
+            <label>
+                <select class="custom-select" formControlName="animals">
+                    <option value="" disabled>I like pets</option>
+                    <option *ngFor="let animal of animals" [ngValue]="animal">{{animal}}</option>
+                </select>
+            </label>
             <input type="submit" [disabled]="!RegisterForm.valid" value="R E G I S T E R">
         </form>
+    </div>
+    <div *ngFor="let data of datas" class="right-div">
+        <h1>{{ data.firstName }} {{ data.lastName | uppercase }}</h1>
+        <p>Adresse Mail : <b>{{ data.mail }}</b></p>
+        <p>Password : <b>{{ data.password }}</b></p>
+        <p>Phone number : <b>{{ data.phone }}</b></p>
+        <p>Pet loving level : <b>{{ data.animals | animalsRating }}</b></p>
     </div>
 </body>

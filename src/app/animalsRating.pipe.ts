@@ -1,19 +1,11 @@
-import { Component, Pipe } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'tp-form-dejean-gazel';
-}
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "AnimalsRate"
+  name: 'animalsRating'
 })
-class DefaultPipe {
-  transform(value: number, fallback: string) {
+export class AnimalsRatingPipe implements PipeTransform {
+
+  transform(value: number, args?: any): any {
     let result = "";
     switch (value) {
       case (1):
@@ -61,4 +53,5 @@ class DefaultPipe {
     }
     return result;
   }
+
 }
